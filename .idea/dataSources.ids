@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails linkedin-crawler: production" uuid="0d1f9008-7a68-4e58-a64c-ee6ba1edfc2b">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails linkedin-crawler: test" uuid="ca16d07c-329b-45ff-a877-12d037ddcea3">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails linkedin-crawler: development" uuid="10982e8d-bb73-4512-9d47-a3a50f23d492">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
