@@ -11,12 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328225840) do
+ActiveRecord::Schema.define(version: 20160330212504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "profile_skills", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.integer  "skill_id"
+    t.integer  "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "profile_skills", ["profile_id"], name: "index_profile_skills_on_profile_id", using: :btree
+  add_index "profile_skills", ["skill_id"], name: "index_profile_skills_on_skill_id", using: :btree
+
   create_table "profiles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "title"
+    t.string   "position"
+    t.string   "summary"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
