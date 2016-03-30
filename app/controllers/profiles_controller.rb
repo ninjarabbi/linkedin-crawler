@@ -9,19 +9,9 @@ class ProfilesController < ApplicationController
   def create
     if @url
       page = Nokogiri::HTML(open(@url, &:read))
+      p = Profile.build_profile(page)
 
-      skills = []
-      page.css("#skills li").each do |s|
-        skills.push(s.text)
-      end
-
-      render json: {
-          title: page.css(".profile-overview-content .title").text,
-          name: page.css("#name").text,
-          position: page.css(".org a").text,
-          summary: page.css("#summary .description").text,
-          skills: skills
-      }
+      render json: p
 
     else
       render file: 'public/422.html', status: :unprocessable_entity, layout: false
