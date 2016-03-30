@@ -1,15 +1,22 @@
 class ProfilesController < ApplicationController
 
-  require 'uri'
+  # require 'uri'
   require 'open-uri'
+  require 'nokogiri'
 
   before_action :parse_url, only: :create
 
   def create
     if @url
-      source = open(@url, &:read)
+      page = Nokogiri::HTML(open(@url, &:read))
 
-      render json: source
+      render json: {
+          title: page.css(".profile-overview-content .title").text,
+          name: page.css("#name").text,
+          position: page.css(".org a").text,
+          summary: page.css("#summary .description").text
+      }
+
     else
       render file: 'public/422.html', status: :unprocessable_entity, layout: false
     end
