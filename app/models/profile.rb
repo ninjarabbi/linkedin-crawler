@@ -2,6 +2,8 @@ class Profile < ActiveRecord::Base
   has_many :profile_skills
   has_many :skills, through: :profile_skills
 
+  validates :name, uniqueness: true
+
   def self.build_profile(page)
 
     profile = Profile.new
@@ -11,12 +13,12 @@ class Profile < ActiveRecord::Base
     profile.position = page.css('.org a').text
     profile.summary = page.css('#summary .description').text
 
-    profile.save
-
-    page.css('#skills li a').each do |s|
-      skill = Skill.find_or_create_by(name: s.text)
-      if skill
-        profile.profile_skills.create(skill_id: skill.id)
+    if profile.save
+      page.css('#skills li a').each do |s|
+        skill = Skill.find_or_create_by(name: s.text)
+        if skill
+          profile.profile_skills.create(skill_id: skill.id)
+        end
       end
     end
 
