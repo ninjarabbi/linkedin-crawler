@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
   require 'nokogiri'
 
   before_action :parse_url, only: :create
+
   respond_to :json
 
   def create
@@ -17,6 +18,10 @@ class ProfilesController < ApplicationController
     else
       render file: 'public/422.html', status: :unprocessable_entity, layout: false
     end
+  end
+
+  def search
+    respond_with Profile.find_by_name(params['name'])
   end
 
   private
