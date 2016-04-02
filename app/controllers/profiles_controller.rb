@@ -5,13 +5,14 @@ class ProfilesController < ApplicationController
   require 'nokogiri'
 
   before_action :parse_url, only: :create
+  respond_to :json
 
   def create
     if @url
       page = Nokogiri::HTML(open(@url, &:read))
       p = Profile.build_profile(page)
 
-      render json: p
+      respond_with p
 
     else
       render file: 'public/422.html', status: :unprocessable_entity, layout: false

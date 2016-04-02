@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: linkedin-crawler_production
-  username: linkedin-crawler
-  password: <%= ENV['LINKEDIN-CRAWLER_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: postgres

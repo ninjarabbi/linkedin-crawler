@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3550135271">
+  <component name="DataSourceManagerImpl" format="xml" hash="1086551758">
     <data-source source="LOCAL" name="Rails linkedin-crawler: production" uuid="0d1f9008-7a68-4e58-a64c-ee6ba1edfc2b">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
